@@ -25,3 +25,9 @@ footer{padding:90px var(--margin) 110px}.footer-stitch{display:flex;justify-cont
 .cover .pocket:after{border-color:#d9b49b88}
 .cover .flap{background:#9a2b43;opacity:1}
 .cover .envelope-date{color:#f4e8d0}
+
+/* Paper stays opaque, including the moment the cover leaves. */
+.cover .letter-window,.cover .letter{opacity:1;mix-blend-mode:normal;filter:none}
+.cover .letter{background:#f2ead8}
+.cover .letter:before,.cover .envelope:before{content:none}
+.cover.dismissed{opacity:1;visibility:hidden;transition:none}

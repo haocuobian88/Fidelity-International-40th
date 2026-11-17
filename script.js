@@ -72,8 +72,7 @@ function openInvitation(){
     main.querySelector('header a').focus({preventScroll:true});
   };
   if(reducedMotion.matches){finishOpening();return;}
-  setTimeout(()=>cover.classList.add('dismissed'),1650);
-  setTimeout(finishOpening,2000);
+  setTimeout(finishOpening,1650);
 }
 document.querySelector('#open').addEventListener('click',openInvitation);
 document.querySelector('#openText').addEventListener('click',openInvitation);
