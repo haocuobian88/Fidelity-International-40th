@@ -84,3 +84,39 @@ body,body *,body *:before,body *:after{font-family:var(--fangsong)!important;fon
 
 .cover .envelope-date{text-align:center}
 body,body *,body *:before,body *:after{font-style:normal!important}
+/* A fixed composition: close-up first; the whole object appears only on request. */
+body{background:#250b13}
+main{max-width:1100px;margin-inline:auto;--margin:clamp(24px,5vw,66px)}
+.cover{inset:0 auto 0 50%;width:min(100%,1100px);height:100dvh;min-height:0;transform:translateX(-50%);background:#560f24 url('assets/red-linen.webp') 0 0/384px 48px;--camera-close:1.2;--camera-fit:.8}
+.envelope-scene{position:absolute;left:50%;top:50%;width:1100px;height:1000px;transform:translate(-50%,-50%) scale(var(--camera-close));transform-origin:50% 50%;transition:transform 1s var(--ease)}
+.cover.revealing .envelope-scene{transform:translate(-50%,-50%) scale(var(--camera-fit))}
+.cover .envelope{inset:260px auto auto 0;width:1100px;height:620px;outline:1px solid #a95c70;background:#3a0b1a;transform:none}
+.cover .cover-copy{top:75px;left:40px;right:40px;z-index:8;opacity:1;transition:opacity .25s;transform:none}
+.cover h1{font-size:60px;line-height:1.4;margin:14px 0;letter-spacing:.06em}
+.cover-copy>p:first-child,.cover-copy>p:last-child{display:block;font-size:20px;line-height:1.8;letter-spacing:.08em}
+.cover .flap{clip-path:polygon(0 0,100% 0,50% 61%);background:#7b2339}
+.cover .flap:before{opacity:.2}
+.cover .seal{width:180px;height:180px;left:460px;top:calc(61% - 90px);outline-offset:-15px;background:#f2ead8}
+.cover .seal>span{font-size:65px;line-height:1}
+.cover .seal small{font-size:28px;line-height:1.6;letter-spacing:.1em}
+.cover .seal:hover{scale:1.025}
+.cover .envelope-date{display:block;bottom:48px;font-size:26px;text-align:center;opacity:0;transition:opacity .4s .6s}
+.cover .seal-instruction{position:absolute;top:auto;bottom:8%;left:12px;right:12px;font-size:15px;z-index:10}
+.cover .music-hint{position:absolute;bottom:3%;left:12px;right:12px;font-size:14px;z-index:10}
+.cover .letter-window{inset:-60% 0 0;overflow:hidden;z-index:2}
+.cover .letter{left:55px;right:55px;bottom:35px;height:calc(62.5% - 70px);gap:30px;font-size:34px;background:#f2ead8;opacity:1}
+.cover .letter b{font-size:27px}
+.cover.revealing .cover-copy,.cover.revealing .seal-instruction,.cover.revealing .music-hint{opacity:0;pointer-events:none}
+.cover.revealing .envelope-date{opacity:1}
+.cover.revealing .seal{pointer-events:none}
+.cover.opening .letter{transform:translateY(-43%)}
+.cover.opening .flap{transform:scaleY(-1);z-index:1}
+.cover.opening .seal{opacity:0}
+@media(max-width:650px){.cover .seal-instruction{bottom:8%;font-size:14px}.cover .music-hint{bottom:3%;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.envelope-scene{transition:none}.cover.opening .letter{transform:none}}
+.cover{background:#7b2339}
+.cover:before{content:"";position:absolute;inset:0;background:url('assets/red-linen.webp') 0 0/384px 48px;opacity:.2;pointer-events:none;z-index:0}
+.cover .flap:after{content:"";position:absolute;inset:0;background:url('assets/envelope-lace.svg') center/100% 100%;opacity:.45;pointer-events:none}
+.cover .envelope{outline:none}
+.cover.revealing .envelope{outline:1px solid #a95c70}
+.cover .flap:after{opacity:.28}

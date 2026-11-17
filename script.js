@@ -60,7 +60,7 @@ function openInvitation(){
   if(opened)return;
   opened=true;
   playMusic();
-  cover.classList.add('opening');
+  cover.classList.add('revealing');
   const finishOpening=()=>{
     main.inert=false;
     main.setAttribute('aria-hidden','false');
@@ -72,7 +72,8 @@ function openInvitation(){
     main.querySelector('header a').focus({preventScroll:true});
   };
   if(reducedMotion.matches){finishOpening();return;}
-  setTimeout(finishOpening,1650);
+  setTimeout(()=>cover.classList.add('opening'),1000);
+  setTimeout(finishOpening,2850);
 }
 document.querySelector('#open').addEventListener('click',openInvitation);
 
@@ -144,3 +145,15 @@ outfitViewer.addEventListener('close',()=>{
   document.body.classList.remove('viewer-open');
   if(outfitTrigger)outfitTrigger.focus({preventScroll:true});
 });
+
+// One fixed 1100 × 1000 composition, cropped close before the seal is pressed.
+function sizeEnvelopeScene(){
+  const width=cover.clientWidth,height=cover.clientHeight;
+  const fit=Math.min((width-32)/1100,(height-40)/1000);
+  const close=Math.max(width/1100*1.5,height/1000*1.3);
+  cover.style.setProperty('--camera-fit',String(Math.max(.15,fit)));
+  cover.style.setProperty('--camera-close',String(close));
+}
+sizeEnvelopeScene();
+if('ResizeObserver' in window)new ResizeObserver(sizeEnvelopeScene).observe(cover);
+else window.addEventListener('resize',sizeEnvelopeScene);
