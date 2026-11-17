@@ -203,3 +203,6 @@ body.menu-floating .floating-menu{position:fixed;top:max(12px,env(safe-area-inse
 @keyframes invitation-title-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(max-height:580px){.cover .portrait-heading{top:9%;gap:5px}.cover .portrait-heading h1{font-size:38px}.cover .portrait-heading p{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.portrait-heading>*{animation:none}}
+
+/* Enlarge the opening title group uniformly by 30 percent. */
+.cover .portrait-heading{scale:1.3;transform-origin:50% 50%}
