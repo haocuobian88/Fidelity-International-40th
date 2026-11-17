@@ -102,3 +102,45 @@ if('IntersectionObserver' in window){
   },{rootMargin:'-10% 0px -65% 0px'});
   document.querySelectorAll('main section[id]').forEach(s=>navObserver.observe(s));
 }
+
+
+// Keep outfit previews on the invitation, with native focus trapping and Escape.
+const outfitViewer=document.querySelector('#outfitViewer');
+const outfitImage=document.querySelector('#outfitImage');
+const outfitZoom=document.querySelector('#outfitZoom');
+const outfitCanvas=document.querySelector('#outfitCanvas');
+let outfitTrigger;
+function setOutfitZoom(zoomed){
+  outfitViewer.classList.toggle('zoomed',zoomed);
+  outfitZoom.setAttribute('aria-pressed',String(zoomed));
+  outfitZoom.textContent=zoomed?'顯示全圖':'放大細節';
+  outfitCanvas.scrollTop=0;
+  outfitCanvas.scrollLeft=0;
+}
+document.querySelectorAll('.outfit-preview').forEach(link=>{
+  link.addEventListener('click',event=>{
+    if(typeof outfitViewer.showModal!=='function')return;
+    event.preventDefault();
+    outfitTrigger=link;
+    const source=link.querySelector('img');
+    outfitImage.src=link.href;
+    outfitImage.alt=source.alt;
+    document.querySelector('#outfitTitle').textContent=source.alt.startsWith('男士')?'男士穿搭靈感':'女士穿搭靈感';
+    setOutfitZoom(false);
+    outfitViewer.showModal();
+    document.body.classList.add('viewer-open');
+  });
+});
+document.querySelector('#outfitClose').addEventListener('click',()=>outfitViewer.close());
+outfitZoom.addEventListener('click',()=>setOutfitZoom(!outfitViewer.classList.contains('zoomed')));
+outfitImage.addEventListener('click',()=>setOutfitZoom(!outfitViewer.classList.contains('zoomed')));
+outfitViewer.addEventListener('click',event=>{
+  if(event.target===outfitCanvas){outfitViewer.close();return;}
+  if(event.target!==outfitViewer)return;
+  const box=outfitViewer.getBoundingClientRect();
+  if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)outfitViewer.close();
+});
+outfitViewer.addEventListener('close',()=>{
+  document.body.classList.remove('viewer-open');
+  if(outfitTrigger)outfitTrigger.focus({preventScroll:true});
+});
