@@ -225,3 +225,7 @@ footer .footer-stitch .anniversary-inline{display:block;width:125px;height:auto;
 .cover .portrait-heading p{font-size:min(38.87px,6cqw,4cqh);line-height:1.8;letter-spacing:.08em;white-space:nowrap}
 @media(max-height:580px){.cover-portrait{--seal-height:190px}.cover .portrait-heading{bottom:calc(33% + var(--seal-height)/2 + 20px)}}
 @media(max-height:400px){.cover-portrait{--seal-height:45cqh}.portrait-seal{height:45cqh;width:36cqh}.cover .portrait-heading{gap:6px}.cover .portrait-heading h1{font-size:min(128.44px,16cqw,12cqh)}.cover .portrait-heading p{font-size:min(38.87px,6cqw,3.5cqh)}}
+
+/* Always show a response, including when reduced motion suppresses confetti. */
+footer .cheers-feedback{min-height:3.6em;max-width:26em;margin:0 auto 20px;font-size:17px;line-height:1.8;color:var(--paper)}
+footer .cheers{touch-action:manipulation}

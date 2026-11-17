@@ -82,7 +82,7 @@ document.querySelector('#open').addEventListener('click',openInvitation);
 
 document.querySelector('#cheers').addEventListener('click',()=>{
   celebrate();
-  document.querySelector('#status').textContent='正好有你，正好一起。期待見到大家！';
+  document.querySelector('#cheersFeedback').textContent='正好有你，正好一起。期待見到大家！';
 });
 toggle.addEventListener('click',()=>{
   if(isMusicOn()){music.pause();return;}
