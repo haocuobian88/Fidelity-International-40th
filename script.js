@@ -10,12 +10,13 @@ main.setAttribute('aria-hidden','true');
 let opened=false;
 let confettiTimer;
 
+function isMusicOn(){return !music.paused&&!music.muted&&music.volume>0;}
 function syncMusic(){
-  const playing=!music.paused;
+  const playing=isMusicOn();
   toggle.classList.toggle('playing',playing);
   toggle.setAttribute('aria-pressed',String(playing));
-  toggle.setAttribute('aria-label',playing?'暫停音樂':'播放音樂');
-  label.textContent=playing?'暫停音樂':'播放音樂';
+  toggle.setAttribute('aria-label',playing?'關閉音樂':'開啟音樂');
+  label.textContent=playing?'關閉音樂':'開啟音樂';
   toggle.classList.toggle('muted',music.muted||music.volume===0);
 }
 async function playMusic(){
@@ -83,9 +84,15 @@ document.querySelector('#cheers').addEventListener('click',()=>{
   celebrate();
   document.querySelector('#status').textContent='正好有你，正好一起。期待見到大家！';
 });
-toggle.addEventListener('click',()=>music.paused?playMusic():music.pause());
+toggle.addEventListener('click',()=>{
+  if(isMusicOn()){music.pause();return;}
+  music.muted=false;
+  if(music.volume===0)music.volume=.35;
+  playMusic();
+});
 music.addEventListener('play',syncMusic);
 music.addEventListener('pause',syncMusic);
+music.addEventListener('volumechange',syncMusic);
 music.addEventListener('error',()=>{
   document.querySelector('#status').textContent='配樂載入失敗，請稍後再試。';
   syncMusic();
@@ -161,29 +168,11 @@ if('ResizeObserver' in window)new ResizeObserver(sizeEnvelopeScene).observe(cove
 else window.addEventListener('resize',sizeEnvelopeScene);
 
 
-const volumeButton=document.querySelector('#volumeButton');
-const volumePanel=document.querySelector('#volumePanel');
-const volumeInput=document.querySelector('#musicVolume');
-const volumeValue=document.querySelector('#volumeValue');
-function setVolumePanel(open){
-  volumePanel.hidden=!open;
-  volumeButton.setAttribute('aria-expanded',String(open));
-  if(open)volumeInput.focus();
+// Keep the menu beside the logo at the top, float it only after scrolling.
+function syncHeaderLayout(){
+  document.body.classList.toggle('menu-floating',window.scrollY>24);
 }
-volumeButton.addEventListener('click',()=>setVolumePanel(volumePanel.hidden));
-volumeInput.addEventListener('input',()=>{music.volume=Number(volumeInput.value)/100;music.muted=false;});
-function syncVolume(){
-  const value=Math.round(music.volume*100);
-  volumeInput.value=String(value);
-  volumeInput.setAttribute('aria-valuetext',`${value}%`);
-  volumeValue.textContent=`${value}%`;
-  syncMusic();
-}
-music.addEventListener('volumechange',syncVolume);
-document.addEventListener('pointerdown',event=>{
-  if(!volumePanel.hidden&&!event.target.closest('.music-dock'))setVolumePanel(false);
-});
-document.addEventListener('keydown',event=>{
-  if(event.key==='Escape'&&!volumePanel.hidden){setVolumePanel(false);volumeButton.focus();}
-});
-syncVolume();
+window.addEventListener('scroll',syncHeaderLayout,{passive:true});
+window.addEventListener('pageshow',syncHeaderLayout);
+syncHeaderLayout();
+syncMusic();
