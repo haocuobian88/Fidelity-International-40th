@@ -16,3 +16,12 @@
 /* Keep the textile visible without competing with reading. */
 .intro:before,.schedule:before,.celebrate:before{background-size:190px 35px;opacity:.16}.date-tag{background:var(--paper);isolation:isolate}.date-tag:before{content:"";position:absolute;inset:0;background:url('assets/ivory-linen.webp') center/190px 35px;opacity:.23;z-index:-1;pointer-events:none}.letter{background:var(--paper);isolation:isolate}.letter:before{content:"";position:absolute;inset:0;background:url('assets/ivory-linen.webp') center/190px 35px;opacity:.2;z-index:-1;pointer-events:none}
 footer{padding:90px var(--margin) 110px}.footer-stitch{display:flex;justify-content:center;align-items:baseline;gap:13px;margin-bottom:25px;color:var(--gold)}.footer-stitch span{font:italic 78px/1 Georgia,serif}.footer-stitch i{font:italic 20px/1.5 Georgia,serif}.stage{margin-bottom:58px}.stage img{outline:1px dashed #9e696b;outline-offset:8px}.props-gallery figure:nth-child(2){margin-top:65px}@media(max-width:650px){footer{padding:65px 24px 105px}.footer-stitch span{font-size:62px}.props-gallery figure:nth-child(2){margin-top:0}.stage{margin-bottom:45px}}
+
+/* Opaque paper surfaces separate the envelope from the textile behind it. */
+.cover .envelope{background:#370c19;outline:1px solid #bb7182;outline-offset:0}
+.cover .envelope:before{opacity:.07}
+.cover .pocket{background:#481020;opacity:1}
+.cover .pocket:before{content:"";position:absolute;inset:0;background:#5a172c;clip-path:polygon(0 0,50% 58%,0 100%)}
+.cover .pocket:after{border-color:#d9b49b88}
+.cover .flap{background:#9a2b43;opacity:1}
+.cover .envelope-date{color:#f4e8d0}
