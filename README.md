@@ -31,3 +31,7 @@
 ## 布藝版本
 
 視覺改為酒紅織紋、米白亞麻、縫線標籤與刺繡祝酒主圖。`assets/embroidered-cheers.webp` 使用內建圖像生成工具製作，提示為「米白毛邊亞麻上的酒紅刺繡碰杯圖，緞帶繡 40，酒紅織布底，限酒紅與米白，無其他文字」。`red-linen.webp` 與 `ivory-linen.webp` 為同張圖的材質裁片，`stage-concept.svg` 為原有佈置示意的酒紅線稿版。圖片只作活動視覺概念。
+
+## 滿版信封與仿宋字型
+
+開場信封填滿視窗，只有「40 同行」封蠟按鈕可開函，支援鍵盤 Enter / Space。所有網頁文字統一使用朱雀仿宋，字型依頁面所需字元製成 WOFF2，隨網站載入，含全部使用中的繁體字。原始字型：https://github.com/TrionesType/zhuque ，SIL OFL 1.1 授權見 assets/FANGSONG-LICENSE.txt。新增文字時，應重新產生子集。圖片內原有文字與官方 logo 為原始素材的一部分。

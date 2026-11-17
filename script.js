@@ -75,7 +75,7 @@ function openInvitation(){
   setTimeout(finishOpening,1650);
 }
 document.querySelector('#open').addEventListener('click',openInvitation);
-document.querySelector('#openText').addEventListener('click',openInvitation);
+
 document.querySelector('#cheers').addEventListener('click',()=>{
   celebrate();
   document.querySelector('#status').textContent='正好有你，正好一起。期待見到大家！';
