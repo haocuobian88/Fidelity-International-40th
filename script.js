@@ -3,6 +3,7 @@ const main=document.querySelector('main');
 const music=document.querySelector('#music');
 const toggle=document.querySelector('#musicToggle');
 const label=document.querySelector('#musicLabel');
+music.volume=.35;
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
 main.inert=true;
 main.setAttribute('aria-hidden','true');
@@ -13,12 +14,13 @@ function syncMusic(){
   const playing=!music.paused;
   toggle.classList.toggle('playing',playing);
   toggle.setAttribute('aria-pressed',String(playing));
-  toggle.setAttribute('aria-label',playing?'暫停配樂':'播放配樂');
-  label.textContent=playing?'暫停配樂':'播放配樂';
+  toggle.setAttribute('aria-label',playing?'暫停音樂':'播放音樂');
+  label.textContent=playing?'暫停音樂':'播放音樂';
+  toggle.classList.toggle('muted',music.muted||music.volume===0);
 }
 async function playMusic(){
-  try{music.volume=.35;await music.play();}
-  catch{document.querySelector('#status').textContent='配樂尚未播放，可點擊右下角播放配樂。';}
+  try{await music.play();}
+  catch{document.querySelector('#status').textContent='配樂尚未播放，可點擊上方選單播放音樂。';}
   syncMusic();
 }
 function celebrate(){
@@ -157,3 +159,31 @@ function sizeEnvelopeScene(){
 sizeEnvelopeScene();
 if('ResizeObserver' in window)new ResizeObserver(sizeEnvelopeScene).observe(cover);
 else window.addEventListener('resize',sizeEnvelopeScene);
+
+
+const volumeButton=document.querySelector('#volumeButton');
+const volumePanel=document.querySelector('#volumePanel');
+const volumeInput=document.querySelector('#musicVolume');
+const volumeValue=document.querySelector('#volumeValue');
+function setVolumePanel(open){
+  volumePanel.hidden=!open;
+  volumeButton.setAttribute('aria-expanded',String(open));
+  if(open)volumeInput.focus();
+}
+volumeButton.addEventListener('click',()=>setVolumePanel(volumePanel.hidden));
+volumeInput.addEventListener('input',()=>{music.volume=Number(volumeInput.value)/100;music.muted=false;});
+function syncVolume(){
+  const value=Math.round(music.volume*100);
+  volumeInput.value=String(value);
+  volumeInput.setAttribute('aria-valuetext',`${value}%`);
+  volumeValue.textContent=`${value}%`;
+  syncMusic();
+}
+music.addEventListener('volumechange',syncVolume);
+document.addEventListener('pointerdown',event=>{
+  if(!volumePanel.hidden&&!event.target.closest('.music-dock'))setVolumePanel(false);
+});
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&!volumePanel.hidden){setVolumePanel(false);volumeButton.focus();}
+});
+syncVolume();
