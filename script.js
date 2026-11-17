@@ -61,7 +61,7 @@ function openInvitation(){
   opened=true;
   playMusic();
   cover.classList.add('opening');
-  setTimeout(()=>{
+  const finishOpening=()=>{
     main.inert=false;
     main.setAttribute('aria-hidden','false');
     document.body.classList.add('opened');
@@ -70,7 +70,10 @@ function openInvitation(){
     revealSections();
     celebrate();
     main.querySelector('header a').focus({preventScroll:true});
-  },reducedMotion.matches?0:1450);
+  };
+  if(reducedMotion.matches){finishOpening();return;}
+  setTimeout(()=>cover.classList.add('dismissed'),1650);
+  setTimeout(finishOpening,2000);
 }
 document.querySelector('#open').addEventListener('click',openInvitation);
 document.querySelector('#openText').addEventListener('click',openInvitation);
