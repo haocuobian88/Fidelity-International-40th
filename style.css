@@ -9,3 +9,7 @@ header{position:relative;z-index:20;display:flex;align-items:center;justify-cont
 @media(max-width:359px){.brand{width:120px}.floating-menu{gap:7px}.floating-menu a{font-size:13px}body.menu-floating .floating-menu{gap:13px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.confetti{display:none}}
 .page-6 .cheers:before{content:"";position:absolute;inset:-12px}
+
+/* The entire envelope opens the invitation, including keyboard activation. */
+.cover{cursor:pointer}
+.cover:focus-visible{outline:3px solid var(--blue);outline-offset:-6px}

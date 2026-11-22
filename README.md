@@ -15,3 +15,7 @@
 活動：2027 年 1 月 8 日（星期五），18:00 迎賓、19:00 開席、21:00 精彩落幕。地點：南港六福萬怡酒店 9F 水晶雲風光，台北市南港區中南里忠孝東路七段359號。飯店名稱可開啟 Google Maps。
 
 `assets/lovely-day.mp3`、官方 Logo 及 PPT 背景由使用者提供。其他舊版素材仍保留在 assets，供歷史版本使用。朱雀仿宋字型來源：https://github.com/TrionesType/zhuque ，授權見 `assets/FANGSONG-LICENSE.txt`。新增中文字後須更新字型子集。
+
+## v23
+
+整個開場信封可點擊開啟通知書並播放配樂，支援 Enter 與空白鍵。
