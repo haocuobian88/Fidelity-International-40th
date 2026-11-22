@@ -13,3 +13,11 @@ header{position:relative;z-index:20;display:flex;align-items:center;justify-cont
 /* The entire envelope opens the invitation, including keyboard activation. */
 .cover{cursor:pointer}
 .cover:focus-visible{outline:3px solid var(--blue);outline-offset:-6px}
+
+/* One official 40 Years silhouette across the invitation, including silver embossing. */
+.anniversary-logo{position:absolute;height:auto;pointer-events:none}
+.silver-logo{filter:drop-shadow(-1px -1px 0 #ffffffa0) drop-shadow(1px 1px 0 #545c63b0)}
+.inline-anniversary{display:inline-block;width:1.63em;height:1.25em;max-width:none;object-fit:contain;vertical-align:-.3em;margin-inline:.1em}
+.logo-1-seal{transform:rotate(-10deg)}
+.logo-2-medal{transform:rotate(-10deg)}
+.logo-6-medal{transform:rotate(-10deg)}
