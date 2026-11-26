@@ -42,3 +42,17 @@ header{position:relative;z-index:20;display:flex;align-items:center;justify-cont
 .outfit-viewer::after{position:fixed;z-index:100}
 @media(max-width:600px){.ppt-page::after,.outfit-viewer::after{background-size:240px 144px}}
 @media print{.ppt-page::after{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+/* v47: one final chapter, with women's and men's inspiration side by side. */
+.final-page{width:100%;background:var(--paper)}
+.paired-outfits{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:0}
+.paired-outfits>.ppt-page{min-width:0}
+.final-page .ppt-page{scroll-margin-top:85px}
+.final-page .paired-outfits .media-hotspot{min-width:0}
+
+/* v48: one continuous paper field for both outfit columns. */
+.paired-outfits{background-color:#f2eadb;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 35px,#a6866320 36px,transparent 37px)}
+.paired-outfits>.ppt-page{background:transparent}
+.paired-outfits .page-art{inset:19% 6% auto;width:88%;height:65%;object-fit:contain;background:#f8f4eb;border:8px solid #f8f4eb;box-sizing:border-box;box-shadow:0 3px 9px #40200e28;transform:rotate(-1deg)}
+.paired-outfits .page-7 .page-art{transform:rotate(1deg)}
+.paired-outfits .pdf-copy text{fill:#6b1426}
