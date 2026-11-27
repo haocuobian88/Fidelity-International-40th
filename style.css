@@ -37,12 +37,7 @@ header{position:relative;z-index:20;display:flex;align-items:center;justify-cont
 .academy-feedback:empty{display:none}
 .academy-back{display:block;text-align:center;padding:14px 24px 24px;background:var(--wine);color:var(--paper);font-size:15px}
 
-/* Review watermark: transparent two-line YULI STUDIO watermark. */
-.ppt-page::after,.outfit-viewer::after{content:"";position:absolute;inset:0;z-index:50;pointer-events:none;background-image:url("assets/yuli-watermark-tilted.svg");background-repeat:repeat;background-position:center;background-size:300px 180px;opacity:.45}
-.outfit-viewer::after{position:fixed;z-index:100}
-@media(max-width:600px){.ppt-page::after,.outfit-viewer::after{background-size:240px 144px}}
-@media print{.ppt-page::after{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
-
+/* Watermarks removed from all pages and modal previews. */
 /* v47: one final chapter, with women's and men's inspiration side by side. */
 .final-page{width:100%;background:var(--paper)}
 .paired-outfits{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:0}
