@@ -56,3 +56,25 @@ header{position:relative;z-index:20;display:flex;align-items:center;justify-cont
 .paired-outfits .page-art{inset:19% 6% auto;width:88%;height:65%;object-fit:contain;background:#f8f4eb;border:8px solid #f8f4eb;box-sizing:border-box;box-shadow:0 3px 9px #40200e28;transform:rotate(-1deg)}
 .paired-outfits .page-7 .page-art{transform:rotate(1deg)}
 .paired-outfits .pdf-copy text{fill:#6b1426}
+
+/* User-approved transparent master artwork. */
+.approved-emblem{position:absolute;object-fit:contain;pointer-events:none;z-index:2}
+.cover-shield{left:12.4%;top:11.1%;width:10%;height:7.1%}
+.cover-wax{left:64.4%;top:34.1%;width:18.2%;height:12.3%;transform:rotate(-8deg)}
+.letter-wax{left:71%;top:9.25%;width:14.7%;height:10.2%;transform:rotate(-8deg)}
+.approved-postmark-wrap{position:absolute;left:26.5%;top:25.5%;width:17%;height:10.5%;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 86%,0 96%);pointer-events:none;z-index:1}
+.approved-postmark{display:block;width:100%;height:auto;transform:rotate(-10deg);transform-origin:center}
+
+/* Temporarily hide photo scene and its six points, closing the vertical gap. */
+.page-5{aspect-ratio:595/255}
+.page-5>.page-art,.page-5>.pdf-copy{height:auto;aspect-ratio:595/842}
+.retained-laurel{display:flex;justify-content:center;padding:0 0 22px;background:var(--paper)}
+.retained-laurel img{width:19%;height:auto;object-fit:contain}
+
+.vote-oval{position:absolute;left:75%;top:63%;width:21%;height:auto;pointer-events:none;z-index:2}
+.paired-outfits .outfit-read{left:50%;top:94%;bottom:auto;transform:translateX(-50%);width:max-content;min-height:30px;border:1px solid #6b142655;background:#f2eadb;color:#6b1426;padding:4px 12px;font-family:var(--fangsong);font-weight:700;font-size:clamp(11px,1.7cqw,16px);text-decoration:underline;text-underline-offset:3px;cursor:zoom-in}
+
+.paired-outfits{padding-bottom:28px}.paired-outfits>.ppt-page{overflow:visible}
+/* Sixth accessory-guide entry adds one row before the closing invitation. */
+.page-8{aspect-ratio:595/872}
+.page-8 .cheers-hotspot{top:86.5%}
